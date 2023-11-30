@@ -122,24 +122,27 @@ const PokedexData = [
     ulPokemon.append(li);
  });
 
-let chosenType = document.querySelectorAll('input[type="checkbox"]:checked');
+// let chosenType = document.querySelectorAll('input[type="checkbox"]:checked');
 let filterBtn = document.querySelector("#filterBtn");
 
 
 
 filterBtn.addEventListener('click', () => {
+  let chosenType = document.querySelectorAll('input[type="checkbox"]:checked');
   let chosenTypeArr = [];
   chosenType.forEach((checkbox) => {
     chosenTypeArr.push(checkbox.value);
   });
   
-  let filteredByType = PokedexData.filter((article) => {
-    return chosenTypeArr.includes(article.type);
+  let filteredByType = PokedexData.filter((pokemon) => {
+    return chosenTypeArr.includes(pokemon.type);
   });
   
-  filteredByType.forEach((article) => {
+  ulPokemon.innerHTML = "";
+
+  filteredByType.forEach((pokemon) => {
     let li = document.createElement("li");
-    li.innerHTML += `${article.name}, ${article.height}, ${article.weight}, ${article.type}`;
+    li.innerHTML += `${pokemon.name}, ${pokemon.height}, ${pokemon.weight}, ${pokemon.type}`;
     ulPokemon.append(li);
     console.log(chosenTypeArr);
   });
