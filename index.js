@@ -112,3 +112,13 @@ const PokedexData = [
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/97.png"
     }
   ];
+
+//Visa ut samtliga pokemon och deras data på sidan.
+
+let ulPokemon = document.querySelector('#pokemonList');
+PokedexData.forEach(pokemon => {
+    let li = document.createElement('li');
+    li.innerHTML += `${pokemon.name}, ${pokemon.height}, ${pokemon.weight}, ${pokemon.type}`;
+    ulPokemon.append(li);
+});
+
