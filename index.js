@@ -148,4 +148,28 @@ filterBtn.addEventListener('click', () => {
   });
  });
 
+ document.querySelector("#addpokemon").addEventListener('click' , () => {
+  let pokemons = [];
+  let name = document.querySelector("#name");
+  let height = document.querySelector("#height");
+  let weight = document.querySelector("#weight");
+  let type = document.querySelector("#type");
+  let url = document.querySelector("#url");
+  
+  let newpokemon = {
+    name: name.value,
+    height: height.value,
+    weight: weight.value,
+    type: type.value,
+    url: url.value
+
+  };
+  pokemons.push(newpokemon);
+
+  pokemons.forEach(pokemon => {
+    let li = document.createElement("li");
+    li.innerText = `${pokemon.name}, ${pokemon.height}, ${pokemon.weight}, ${pokemon.type}, ${pokemon.url}`;
+    result.append(li);
+  })
+ })
 
