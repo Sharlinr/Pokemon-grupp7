@@ -115,10 +115,34 @@ const PokedexData = [
 
 //Visa ut samtliga pokemon och deras data på sidan.
 
-let ulPokemon = document.querySelector('#pokemonList');
-PokedexData.forEach(pokemon => {
-    let li = document.createElement('li');
+ let ulPokemon = document.querySelector('#pokemonList');
+ PokedexData.forEach(pokemon => {
+     let li = document.createElement('li');
     li.innerHTML += `${pokemon.name}, ${pokemon.height}, ${pokemon.weight}, ${pokemon.type}`;
     ulPokemon.append(li);
-});
+ });
+
+let chosenType = document.querySelectorAll('input[type="checkbox"]:checked');
+let filterBtn = document.querySelector("#filterBtn");
+
+
+
+filterBtn.addEventListener('click', () => {
+  let chosenTypeArr = [];
+  chosenType.forEach((checkbox) => {
+    chosenTypeArr.push(checkbox.value);
+  });
+  
+  let filteredByType = PokedexData.filter((article) => {
+    return chosenTypeArr.includes(article.type);
+  });
+  
+  filteredByType.forEach((article) => {
+    let li = document.createElement("li");
+    li.innerHTML += `${article.name}, ${article.height}, ${article.weight}, ${article.type}`;
+    ulPokemon.append(li);
+    console.log(chosenTypeArr);
+  });
+ });
+
 
